@@ -1,9 +1,12 @@
 package com.unitec.localizamigos
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Vibrator
 import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,8 +21,26 @@ class MainActivity : AppCompatActivity() {
      var v= getSystemService(VIBRATOR_SERVICE) as Vibrator
       // invocamos el vibrador
       v.vibrate(3000)
-       //Empezamos a programar para ver la forma de implementar los eventos de boton
-       //en android studio
+
+       /*Empezamos a programar para ver la forma de implementar los eventos de boton
+       en android studio:
+       */
+        var botonEmpezar=   findViewById<Button>(R.id.empezar)
+
+        //Manejamos el evento
+        botonEmpezar.setOnClickListener {
+            //Antes de la navegacion hacia la activity registro vamos a invocar a una componente
+            // qu se llama Toast: estos son mensajes de corta duracion que se mustran en la pantalla
+            Toast.makeText(applicationContext," Vamos a registrarnos!!", Toast.LENGTH_LONG).show()
+           //El siguiente renglon nos lleva de esta acivity a la de registro:
+
+            //La redireccionamos
+           startActivity(Intent(this, RegistroActivity::class.java))
+        }
+
+
+
+
        //declaracion de una variable en kotlin
        var x=4
        var y="Hola mundo!!"
