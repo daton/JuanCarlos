@@ -7,6 +7,7 @@ import android.os.Vibrator
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
        en android studio:
        */
         var botonEmpezar=   findViewById<Button>(R.id.empezar)
+        //Invocamos el boton "localizar" por su id, hora con el plugin de extensiones
+
+        localizar.setOnClickListener {
+          startActivity(Intent(this,MapitaActivity::class.java))
+      }
+
 
         //Manejamos el evento
         botonEmpezar.setOnClickListener {
