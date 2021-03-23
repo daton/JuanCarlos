@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
+
         supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
@@ -125,5 +128,12 @@ class MainActivity : AppCompatActivity() {
     fun  saludar(){
         Log.i("MALO", "Implementando mi primer funcion en kotlin")
 
+    }
+
+
+    fun ejercicios(){
+         var x=10
+        var y:Int=10
+        var z:Int
     }
 }
