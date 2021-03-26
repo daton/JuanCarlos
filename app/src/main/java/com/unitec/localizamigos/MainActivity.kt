@@ -1,10 +1,13 @@
 package com.unitec.localizamigos
 
+import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Vibrator
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,14 +20,19 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
         supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
+
+
+
+
+
+
         //Vamos a poner un codigo gracioso!! vamos a activar el vibrador!!!
      var v= getSystemService(VIBRATOR_SERVICE) as Vibrator
       // invocamos el vibrador
-      v.vibrate(3000)
+     // v.vibrate(3000)
 
        /*Empezamos a programar para ver la forma de implementar los eventos de boton
        en android studio:

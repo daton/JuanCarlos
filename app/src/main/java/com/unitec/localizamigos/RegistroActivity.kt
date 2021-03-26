@@ -46,12 +46,17 @@ class RegistroActivity : AppCompatActivity() {
              usuariojson.put("nickname", usuario.nickname)
              usuariojson.put("nombre",usuario.nombre)
 
+
+
           //Punto 4. Generar el objeto de tipo Request donde se enviar al back-end nuestro usuario
 
             var url="https://benesuela.herokuapp.com/api/usuario"
              val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, url, usuariojson,
                      Response.Listener { response ->
                          //Ponemo la notificacion del back end en una objeto de tipo Toast
+
+                      //AQUI VAMOS A GUARDAR EL OBJETO EN SharedPreferences
+
                        Toast.makeText(this,  response.get("mensaje").toString(), Toast.LENGTH_LONG).show()
                      },
                      Response.ErrorListener { error ->
