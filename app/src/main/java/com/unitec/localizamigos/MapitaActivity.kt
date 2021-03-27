@@ -3,9 +3,6 @@
  import kotlinx.android.synthetic.main.activity_mapita.*
  import android.annotation.SuppressLint
  import android.os.Bundle
- import android.view.Menu
- import android.view.MenuInflater
- import android.view.MenuItem
  import android.widget.Toast
  import androidx.appcompat.app.AppCompatActivity
  import androidx.core.content.ContextCompat
@@ -53,29 +50,6 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
 
      private val callback: LocationChangeListeningActivityLocationCallback =
              LocationChangeListeningActivityLocationCallback(this)
-
-
-     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-         val inflater: MenuInflater = menuInflater
-         inflater.inflate(R.menu.menusito, menu)
-         return true
-     }
-     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-         // Handle item selection
-         return when (item.itemId) {
-             R.id.opcion1 -> {
-              //Un metodo o accion
-                 Toast.makeText(applicationContext, "Primera", Toast.LENGTH_LONG).show()
-                 true
-             }
-             R.id.opcion2 -> {
-                 //Un metodo o accion
-                 Toast.makeText(applicationContext, "Segunda", Toast.LENGTH_LONG).show()
-                 true
-             }
-             else -> super.onOptionsItemSelected(item)
-         }
-     }
 
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)

@@ -23,6 +23,23 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
+//Si el usuario y se metio una vez y se registro debemos buscar o invocar el archivo
+        //de preferencias compartidas y buscar al nombre de usuario y si existe
+        //pues ocultamos el boton de empezar ahora, porque ya no hay necesidd de registra.
+      //Aqui vaomos a la inversa, leeremos el archivito de preferencias compartidas
+      val preferencias=applicationContext?.getSharedPreferences("AMIGOS", Context.MODE_PRIVATE)?:return
+       //Para leer informacion se hace directamene con el objeeto preferencias y no el edit que es guardar
+        with(preferencias){
+            val valorNombre=     getString("nombre", null)
+            if(!valorNombre.isNullOrEmpty()){
+                //Esta condicion si se cumple, quiere decir que ya te regustraste que ya tiene el nombre
+                    //Y ADEMAS QUE YA NO TIENE QUE ESTAR VISIBLE EL BOTON DONDE TE REGUSTRAS.
+                Toast.makeText(applicationContext, "Bienvenido de nuevo ${valorNombre}", Toast.LENGTH_LONG).show()
+                //oCULTAMOS EL BOTON DE REGISTRO.
+              empezar.visibility=View.INVISIBLE
+            }
+        }
+
 
 
 

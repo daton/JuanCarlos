@@ -57,7 +57,19 @@ class RegistroActivity : AppCompatActivity() {
 
                       //AQUI VAMOS A GUARDAR EL OBJETO EN SharedPreferences
 
-                       Toast.makeText(this,  response.get("mensaje").toString(), Toast.LENGTH_LONG).show()
+     val preferencias=applicationContext?.getSharedPreferences("AMIGOS", Context.MODE_PRIVATE)?:return@Listener
+                      //Con notacion funcional con lambdas mas moderno y mas seguro al nullpointer exception
+                         with(preferencias.edit()){
+                             putString("nombre", usuario.nombre).commit()
+                            // putFloat("edad", 19.8f).commit()
+                         }
+
+                        //El equivalente de arriba pero orientado a objeto
+                        // preferencias?.edit()?.putString("nombre", usuario.nombre)?.commit()
+                         //Puedes guardar cualquier otro tipo de variable no necesriamente string
+                       //  preferencias?.edit()?.putFloat("edad", 19.5f)
+
+                         Toast.makeText(this,  response.get("mensaje").toString(), Toast.LENGTH_LONG).show()
                      },
                      Response.ErrorListener { error ->
                          // TODO: Handle error
