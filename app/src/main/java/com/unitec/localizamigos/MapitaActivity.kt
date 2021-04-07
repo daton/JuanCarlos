@@ -3,6 +3,8 @@
  import kotlinx.android.synthetic.main.activity_mapita.*
  import android.annotation.SuppressLint
  import android.os.Bundle
+ import android.view.Menu
+ import android.view.MenuItem
  import android.widget.Toast
  import androidx.appcompat.app.AppCompatActivity
  import androidx.core.content.ContextCompat
@@ -54,6 +56,31 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
 
      private val callback: LocationChangeListeningActivityLocationCallback =
              LocationChangeListeningActivityLocationCallback(this)
+
+//Invocamos los metodo del menu
+     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         //Este metodo surve para invocar el menu que acabaos de crear y lo coloca en la tolbar
+         menuInflater.inflate(R.menu.menusito, menu)
+         return super.onCreateOptionsMenu(menu)
+     }
+
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         when(item.itemId){
+             R.id.accion_todos->{
+                 //Esta seria la opcion a ejecutarse paa el caso de el primer item
+             }
+             R.id.accion_uno->{
+                 //Este seria la accion a ejecutarse para el segundo item del menu.
+             }
+             else->{
+                //El default
+             }
+         }
+         return super.onOptionsItemSelected(item)
+     }
+
+
+
 
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
