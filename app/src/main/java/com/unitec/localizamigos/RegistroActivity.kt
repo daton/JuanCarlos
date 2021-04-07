@@ -62,6 +62,7 @@ class RegistroActivity : AppCompatActivity() {
                       //Con notacion funcional con lambdas mas moderno y mas seguro al nullpointer exception
                          with(preferencias.edit()){
                              putString("nombre", usuario.nombre).commit()
+                             putString("email", usuario.email).commit()
                             // putFloat("edad", 19.8f).commit()
                          }
 

@@ -6,6 +6,10 @@
  import android.widget.Toast
  import androidx.appcompat.app.AppCompatActivity
  import androidx.core.content.ContextCompat
+ import com.android.volley.Request
+ import com.android.volley.Response
+ import com.android.volley.toolbox.JsonObjectRequest
+
  import com.mapbox.android.core.location.*
  import com.mapbox.android.core.permissions.PermissionsListener
  import com.mapbox.android.core.permissions.PermissionsManager
@@ -81,7 +85,7 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
              // Personalizacion de opciones de localizacion
              val customLocationComponentOptions = LocationComponentOptions.builder(this)
                      .trackingGesturesManagement(true)
-                     .accuracyColor(ContextCompat.getColor(this, R.color.design_default_color_on_secondary))
+                     .accuracyColor(ContextCompat.getColor(this, R.color.teal_200))
                      .build()
 
              val locationComponentActivationOptions = LocationComponentActivationOptions.builder(
@@ -192,12 +196,9 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
              if(activity!=null){
                  val location=result.lastLocation?:return
 
+       //En esta parte podemos leer de preferencias compartidas el registro guardado
+                 //que usuario es el que se va a actulizar
 
-              /*   Toast.makeText(
-                         activity,
-                         "${result.lastLocation!!.latitude.toString()},${result.lastLocation!!.longitude.toString()},${result.lastLocation!!.altitude.toString()}",
-                         Toast.LENGTH_SHORT
-                 ).show()  */
 
               //Aqui en esta parte vamos a invocar el servicio REST donde nosotros vamos a estar
               //mandando al back End con  la informacion de la ultima localizacion
@@ -217,6 +218,22 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
                  //El siguiente paso es invocar aqui tu servicio REST con la url
                  //  var url="https://benesuela.herokuapp.com/api/usuario"
                  //PERO usando el metodo PUT
+
+            var url="https://benesuela.herokuapp.com/api/usuario"
+              var jsonRequest = JsonObjectRequest(Request.Method.PUT, url,usuario,
+              Response.Listener {
+                 //Este Toast lo quitas una vez que verifiques que funciona
+                  Toast.makeText(applicationContext,it.get("mensaje").toString(), Toast.LENGTH_LONG).show()
+
+              }, Response.ErrorListener {
+                  Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_LONG).show()
+              })
+
+                 //Se invoca el request con la clase Singleton
+                 MiSingleton.getInstance(applicationContext).addToRequestQueue(jsonRequest)
+
+
+
 
 
 
