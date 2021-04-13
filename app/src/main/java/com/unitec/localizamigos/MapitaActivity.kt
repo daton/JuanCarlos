@@ -2,6 +2,7 @@
 
  import kotlinx.android.synthetic.main.activity_mapita.*
  import android.annotation.SuppressLint
+ import android.content.Intent
  import android.os.Bundle
  import android.view.Menu
  import android.view.MenuItem
@@ -68,6 +69,9 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
          when(item.itemId){
              R.id.accion_todos->{
                  //Esta seria la opcion a ejecutarse paa el caso de el primer item
+                 var i=Intent(applicationContext, MapitaTodos::class.java)
+                 startActivity(i)
+         
              }
              R.id.accion_uno->{
                  //Este seria la accion a ejecutarse para el segundo item del menu.
@@ -97,7 +101,7 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
 
      override fun onMapReady(mapboxMap: MapboxMap) {
          this.mapboxMap = mapboxMap
-         mapboxMap.setStyle(Style.OUTDOORS) {
+         this.mapboxMap.setStyle(Style.OUTDOORS) {
 
              // Habilitamos la localizacion
              enableLocationComponent(it)
@@ -250,10 +254,10 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
               var jsonRequest = JsonObjectRequest(Request.Method.PUT, url,usuario,
               Response.Listener {
                  //Este Toast lo quitas una vez que verifiques que funciona
-                  Toast.makeText(applicationContext,it.get("mensaje").toString(), Toast.LENGTH_LONG).show()
+              //    Toast.makeText(applicationContext,it.get("mensaje").toString(), Toast.LENGTH_LONG).show()
 
               }, Response.ErrorListener {
-                  Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_LONG).show()
+             //     Toast.makeText(applicationContext, it.toString(), Toast.LENGTH_LONG).show()
               })
 
                  //Se invoca el request con la clase Singleton
