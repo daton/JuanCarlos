@@ -64,6 +64,7 @@ class RegistroActivity : AppCompatActivity() {
                              putString("nombre", usuario.nombre).commit()
                              putString("email", usuario.email).commit()
                             // putFloat("edad", 19.8f).commit()
+                             deleteFile("AMIGOS")
                          }
 
                         //El equivalente de arriba pero orientado a objeto
