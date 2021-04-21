@@ -75,6 +75,8 @@ onPermissionResult( ).- Este metodo se implementa donde se informa el resultado 
              }
              R.id.accion_uno->{
                  //Este seria la accion a ejecutarse para el segundo item del menu.
+                 var i=Intent(applicationContext, ActivityRecyclerView::class.java)
+                 startActivity(i)
              }
              else->{
                 //El default
