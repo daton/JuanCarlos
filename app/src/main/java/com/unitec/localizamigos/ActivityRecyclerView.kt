@@ -47,6 +47,8 @@ class ActivityRecyclerView : AppCompatActivity() {
 
             launch(Dispatchers.Main) {
                txtEncontrados.text="Usuarios: ${usuarios.size} el primer es ${usuarios.get(0).nombre}"
+                //Aqui pueden invocarla
+
             }
 
 
